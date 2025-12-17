@@ -1,3 +1,5 @@
+use panel::prelude::*;
+
 use crate::factory::FactoryView;
 
 impl FactoryView for panel::Paned {
