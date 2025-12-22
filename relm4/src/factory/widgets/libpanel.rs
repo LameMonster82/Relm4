@@ -45,7 +45,7 @@ impl FactoryView for panel::Paned {
 }
 
 impl FactoryView for panel::DocumentWorkspace {
-    type Children = gtk::Widget;
+    type Children = panel::Widget;
     type ReturnedWidget = panel::Widget;
     type Position = panel::Area;
 
@@ -58,11 +58,9 @@ impl FactoryView for panel::DocumentWorkspace {
         child: impl AsRef<Self::Children>,
         position: &Self::Position,
     ) -> Self::ReturnedWidget {
-        let widget = panel::Widget::new();
-        widget.set_child(Some(child.as_ref()));
         let w_pos = panel::Position::builder().area(*position).build();
-        self.add_widget(&widget, Some(&w_pos));
-        widget
+        self.add_widget(child.as_ref(), Some(&w_pos));
+        child.as_ref().clone()
     }
 
     fn factory_prepend(
@@ -83,9 +81,7 @@ impl FactoryView for panel::DocumentWorkspace {
     }
 
     fn returned_widget_to_child(root_child: &Self::ReturnedWidget) -> Self::Children {
-        root_child
-            .child()
-            .expect("That panel widget has no child????")
+        root_child.clone()
     }
 
     fn factory_move_after(&self, _widget: &Self::ReturnedWidget, _other: &Self::ReturnedWidget) {}
