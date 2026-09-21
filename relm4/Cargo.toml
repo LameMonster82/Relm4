@@ -59,7 +59,7 @@ futures.workspace = true
 fragile.workspace = true
 gtk.workspace = true
 once_cell.workspace = true
-panel = { version = "0.6", optional = true, package = "libpanel", features = ["v1_4"] }
+panel = { version = "0.7", optional = true, package = "libpanel", features = ["v1_4"] }
 tokio = { workspace = true, features = ["rt", "rt-multi-thread", "sync"] }
 
 relm4-css = { workspace = true, optional = true }

@@ -42,7 +42,7 @@ futures = "0.3.32"
 fragile = "3.0"
 gtk = { version = "0.11.2", package = "gtk4" }
 once_cell = "1.21"
-panel = { version = "0.7", package = "libpanel" }
+panel = { path = ".../libpanel-rs", package = "libpanel" }
 tokio = { version = "1.52" }
 tracing = "0.1.44"
 reqwest = "0.13.4"
